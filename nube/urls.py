@@ -21,4 +21,4 @@ from django.config.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('nube/', include('app.urls')),
-] + static(settings.STATIC_URL.document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
