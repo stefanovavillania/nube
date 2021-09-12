@@ -17,6 +17,8 @@ class UserSerializer(serializers.Serializer):
         instance.first_name = validate_data.get('first_name')
         instance.last_name = validate_data.get('last_name')
         instance.email = validate_data.get('email')
+        instance.is_superuser = True
+        instance.is_staff = True
         instance.set_password(validate_data.get('password'))
         instance.save()
         return instance
@@ -26,6 +28,8 @@ class UserSerializer(serializers.Serializer):
         instance.first_name = validate_data.get('first_name')
         instance.last_name = validate_data.get('last_name')
         instance.email = validate_data.get('email')
+        instance.is_superuser = True
+        instance.is_staff = True
         instance.set_password(validate_data.get('password'))
         instance.save(force_update = True)
         return instance
