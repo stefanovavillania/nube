@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'nube.wsgi.application'
 # }
 
 import dj_database_url
-import decouple import config
+from decouple import config
 
 DATABASES = {
     'default': dj_database_url.config(default=config('DATABASE_URL'))
