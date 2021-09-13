@@ -6,6 +6,41 @@
     <title>Nube</title>
   </head>
   <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+       <a class="navbar-brand" href="{% url 'admin:index' %}">
+         <i class="fa fa-cloud" aria-hidden="true"></i>
+         Nube
+       </a>
+ </div>
+    </nav>
+    <br clear="all">
+    <div class="row">
+      <div class="col-md-7 offset-md-1">
 
+
+    <table class="table">
+      <thead>
+       <tr>
+         <th scope="col">Usuario</th>
+         <th scope="col">Nombres</th>
+         <th scope="col">Apellidos</th>
+         <th scope="col">Correo</th>
+       </tr>
+      </thead>
+      <tbody>
+       {% for i in users %}
+         <tr class="{% if forloop.counter|divisibleby:2 %}table-primary{% elif forloop.counter|divisibleby:3 %}table-secondary {% elif forloop.counter == 1 %}table-success {% elif forloop.counter|divisibleby:5 %}table-dark {% endif %}">
+           <td>{{ i.username }}</td>
+           <td>{{ i.first_name }}</td>
+           <td>{{ i.last_name }}</td>
+           <td>{{ i.email }}</td>
+         </tr>
+       {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+    <script src="https://kit.fontawesome.com/df37332ed3.js" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -1,9 +1,17 @@
 from django.contrib.auth.models import User, Permission
+from django.shortcuts import render
+from django.views.generic import View
 from .serializers import UserSerializer, PermissionSerializer
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.generics import ListAPIView, DestroyAPIView
+from rest_framework.generics import ListAPIView
+
+class IndexView(View):
+    template = 'base.html'
+    def get(self, request, *args, **kwargs):
+        users = User.objects.all()
+        return render(request, self.template, {'users': users})
 
 class ListUserAPIView(ListAPIView):
     queryset = User.objects.all()
