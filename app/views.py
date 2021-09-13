@@ -5,13 +5,7 @@ from .serializers import UserSerializer, PermissionSerializer
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.generics import ListAPIView
-
-class IndexView(View):
-    template = 'base.html'
-    def get(self, request, *args, **kwargs):
-        users = User.objects.all()
-        return render(request, self.template, {'users': users})
+from rest_framework.generics import ListAPIView, DestroyAPIView
 
 class ListUserAPIView(ListAPIView):
     queryset = User.objects.all()
